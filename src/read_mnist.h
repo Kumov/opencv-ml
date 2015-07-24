@@ -1,9 +1,7 @@
 #ifndef READMNIST_H
 #define READMNIST_H
 
-
 // Functions for read in Mnist dataset
-
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
