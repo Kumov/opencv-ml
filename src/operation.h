@@ -30,5 +30,19 @@ Mat concatenateMat(vector<Mat> &vec)
     return res;
 }
 
+float evaluate(cv::Mat& predicted, cv::Mat& actual) {
+	assert(predicted.rows == actual.rows);
+	int t = 0;
+	int f = 0;
+	for(int i = 0; i < actual.rows; i++) {
+		float p = predicted.at<float>(i,0);
+		float a = actual.at<float>(i,0);
+		if((p >= 0.0 && a >= 0.0) || (p <= 0.0 &&  a <= 0.0))
+	        t++;
+		else
+		    f++;
+	}
+	return (t * 1.0) / (t + f);
+}
 
 #endif
