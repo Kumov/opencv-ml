@@ -17,8 +17,8 @@ using namespace cv;
 
 // #define CV_LOAD_IMAGE_GRAYSCALE 0
 
-void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, vector<int> &label);
 void tokenize_line(const string s, char delim, vector<string> &token_list);
+void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, vector<int> &label);
 
 
 void tokenize_line(const string s, char delim, vector<string> &token_list)
@@ -66,5 +66,6 @@ void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, 
       images.push_back(img);
   }
 }
+
 
 #endif

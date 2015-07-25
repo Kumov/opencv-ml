@@ -1,1 +1,5 @@
 test_*.cpp
+*.txt
+*.bin
+*.out
+*.swp
