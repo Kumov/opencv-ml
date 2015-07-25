@@ -18,7 +18,7 @@ using namespace std;
 
 // Functions list
 void svm_train(cv::Mat& train_data, cv::Mat& train_label, CvSVM &svm, char* svm_filename);
-cv::Mat svm_predict(cv::Mat& test_data, CvSVM &svm);
+cv::Mat svm_batch_predict(cv::Mat& test_data, CvSVM &svm);
 float evaluate(cv::Mat& predicted, cv::Mat& actual);
 
 
@@ -52,7 +52,7 @@ void svm_train(cv::Mat& train_data, cv::Mat& train_label, CvSVM &svm, char* svm_
 
 
 // Predict by svm and return the results
-cv::Mat svm_predict(cv::Mat& test_data, CvSVM &svm)
+cv::Mat svm_batch_predict(cv::Mat& test_data, CvSVM &svm)
 {
 	//Test the data by SVM
     cv::Mat results(test_data.rows, 1, CV_32FC1);
@@ -73,11 +73,10 @@ float evaluate(cv::Mat& predicted, cv::Mat& actual) {
 	for(int i = 0; i < actual.rows; i++) {
 		float p = predicted.at<float>(i,0);
 		float a = actual.at<float>(i,0);
-		if((p >= 0.0 && a >= 0.0) || (p <= 0.0 &&  a <= 0.0)) {
-			t++;
-		} else {
-			f++;
-		}
+		if((p >= 0.0 && a >= 0.0) || (p <= 0.0 &&  a <= 0.0))
+	        t++;
+		else
+		    f++;
 	}
 	return (t * 1.0) / (t + f);
 }

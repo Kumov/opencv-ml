@@ -14,10 +14,7 @@ int main(int argc, char** argv)
   vector<int> labels;
 
   // load in images
-  string dir_path = argv[1];
-  if( dir_path[dir_path.size()-1] != '/' )
-    dir_path = dir_path + "/";
-  load_images_and_labels(dir_path, argv[2], images, labels);
+  load_images_and_labels(argv[1], argv[2], images, labels);
 
   // Output images and labels
   for(int i = 0; i < images.size(); i++){

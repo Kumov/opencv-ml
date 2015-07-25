@@ -36,11 +36,11 @@ int main(int argc, char** argv){
   load_images_and_labels(argv[3], argv[4], test, test_label);
 
   // Reshape training and testing data
-  Mat train_X, train_y, test_X, test_y;
-  train_X = concatenateMat(train_data);
-  train_y = concatenateMat(train_label);
-  test_X = concatenateMat(test_data);
-  test_y = concatenateMat(test_label);
+  Mat train_X, test_X;
+  train_X = concatenateMat(train);
+  test_X = concatenateMat(test);
+  Mat train_y(train_label, false);
+  Mat test_y(test_label, false);
 
   // Set up SVM parameters
   CvSVMParams params;
@@ -57,8 +57,10 @@ int main(int argc, char** argv){
   // Test the trained SVM
   cout << "Test the SVM on testing data ..." << endl;
   cv::Mat results;
-  results = svm_predict(test_data, svm);
+  svm.predict(test_X, results);
 
   // Evaluate the accuracy
-  cout << "Evaluating Accuray ...(This function is not finish yet!)" << endl;
+  cout << "Evaluating Accuray ..." << endl;
+  float acc;
+  acc = evaluate(results, test_y);
 }
