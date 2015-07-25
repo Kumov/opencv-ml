@@ -21,6 +21,16 @@ void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, 
 void tokenize_line(const string s, char delim, vector<string> &token_list);
 
 
+void tokenize_line(const string s, char delim, vector<string> &token_list)
+{
+  stringstream ss(s);
+  string item;
+  while( getline(ss, item, delim) ){
+    token_list.push_back(item);
+  }
+}
+
+
 void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, vector<int> &label)
 {
   images.clear();
@@ -56,16 +66,5 @@ void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, 
       images.push_back(img);
   }
 }
-
-
-void tokenize_line(const string s, char delim, vector<string> &token_list)
-{
-  stringstream ss(s);
-  string item;
-  while( getline(ss, item, delim) ){
-    token_list.push_back(item);
-  }
-}
-
 
 #endif
