@@ -9,8 +9,8 @@
 #include "opencv2/ml/ml.hpp"
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include "../src/iofunction.h"
-#include "../src/operation.h"
+#include "../lib/iofunction.h"
+#include "../lib/operation.h"
 
 
 using namespace cv;

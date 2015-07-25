@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../src/iofunction.h"
+#include "../lib/iofunction.h"
 #include "opencv2/highgui/highgui.hpp"
 
 using namespace std;
