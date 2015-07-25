@@ -9,8 +9,7 @@
 #include "opencv2/ml/ml.hpp"
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include "readMnist.h"
-#include "cvml.h"
+#include "../src/iofunction.h"
 
 
 using namespace cv;
@@ -21,7 +20,9 @@ int main(int argc, char** argv){
     //Print help info
     if(argc != 5){
       cout << "Test CvML functionality using mnist dataset" << endl;
-      cout << "usage: ./mnist_svm [train data] [train label] [test data] [test label]" << endl;
+      cout << "usage: ./mnist_svm [train dir] [train label] [test dir] [test label]" << endl;
+      cout << "\n# * dir: directory path for training data" << endl;
+      cout << "# * label: training data label file" << endl;
       exit(1);
     }
 
@@ -39,8 +40,8 @@ int main(int argc, char** argv){
 	//Train the SVM classifier and dump it
     cout << "Train and Save SVM model ..." << endl;
     CvSVM svm;
-    char model_fname[] = "mnist_svm_model";
-    svm_train(train_data, train_label, svm, model_fname);
+    string model_fname = "mnist_svm_model";
+    svm_train(train_data, train_label, svm, model_fname.c_str());
 
 	//Test the trained SVM
     cout << "Test the SVM on testing data ..." << endl;
