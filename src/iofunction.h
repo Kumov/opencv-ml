@@ -38,6 +38,10 @@ void load_images_and_labels(string dir_path, string fname, vector<Mat> &images, 
 
   vector<string> fname_list;
 
+  // Check if dir_path include '/' at the end and revise it if not
+  if( dir_path[dir_path.size()-1] != '/' )
+    dir_path = dir_path + "/";
+
   // Read in labels
   ifstream f;
   f.open(fname, ios::in);
