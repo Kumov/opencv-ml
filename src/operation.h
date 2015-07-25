@@ -15,11 +15,11 @@ Mat concatenateMat(vector<Mat> &vec)
 {
     int height = vec[0].rows;
     int width = vec[0].cols;
-    Mat res = Mat::zeros(height * width, vec.size(), CV_64FC1);
+    Mat res = Mat::zeros(height * width, vec.size(), CV_32FC1);
     for(int i=0; i<vec.size(); i++){
-        Mat img(height, width, CV_64FC1);
+        Mat img(height, width, CV_32FC1);
 
-        vec[i].convertTo(img, CV_64FC1);
+        vec[i].convertTo(img, CV_32FC1);
         // reshape(int cn, int rows=0), cn is num of channels.
         Mat ptmat = img.reshape(0, height * width);
         Rect roi = cv::Rect(i, 0, ptmat.cols, ptmat.rows);
